@@ -2,414 +2,565 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // Bootstrap overrides for this template
-$theme-primary:    #fdcc52;
-$theme-secondary:  #7b4397;
-$theme-tertiary:   #dc2430;
 
-$gray-base:        #000;
-$gray-darker:      lighten($gray-base, 13.5%); // #222
-$gray-dark:        lighten($gray-base, 20%);   // #333
-$gray:             lighten($gray-base, 33.5%); // #555
-$gray-light:       lighten($gray-base, 46.7%); // #777
-$gray-lighter:     lighten($gray-base, 93.5%); // #eee
+@import "bootstrap";
 
-$brand-twitter:		#1da1f2;
-$brand-facebook:	#3b5998;
-$brand-google-plus:	#dd4b39;
+// Variables
 
-.bg-primary {
-    background: $theme-primary;
-    background: -webkit-linear-gradient($theme-primary, darken($theme-primary, 5%));
-    background: linear-gradient($theme-primary, darken($theme-primary, 5%));
+$gray-darker: lighten(#000, 13.5%);
+$gray-dark: lighten(#000, 20%);
+$gray: lighten(#000, 33.5%);
+$gray-light: lighten(#000, 60%);
+$gray-lighter: lighten(#000, 93.5%);
+$gray-lightest: lighten(#000, 97.25%);
+$brand-primary: #428bca;
+$brand-success: #5cb85c;
+$brand-info: #5bc0de;
+$brand-warning: #f0ad4e;
+$brand-danger: #d9534f;
+
+// Global Styles
+
+body {
+    background-color: $gray-lightest;
 }
 
-.text-primary {
-    color: $theme-primary;
+// Wrappers
+
+#wrapper {
+    width: 100%;
 }
 
-.no-gutter > [class*='col-'] {
-    padding-right: 0;
-    padding-left: 0;
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: white;
 }
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid darken($gray-lightest, 6.5%);
+    }
+}
+
+// Navigation
+
+// --Topbar
+
+.navbar-top-links {
+    margin-right: 0;
+}
+
+.navbar-top-links li {
+    display: inline-block;
+}
+
+.navbar-top-links li:last-child {
+    margin-right: 15px;
+}
+
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
+}
+
+.navbar-top-links .dropdown-menu li {
+    display: block;
+}
+
+.navbar-top-links .dropdown-menu li:last-child {
+    margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+    white-space: normal;
+}
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+    width: 310px;
+    min-width: 0;
+}
+
+.navbar-top-links .dropdown-messages {
+    margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-tasks {
+    margin-left: -59px;
+}
+
+.navbar-top-links .dropdown-alerts {
+    margin-left: -123px;
+}
+
+.navbar-top-links .dropdown-user {
+    right: 0;
+    left: auto;
+}
+
+// --Sidebar
+
+.sidebar {
+    .sidebar-nav.navbar-collapse {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid darken($gray-lightest, 6.5%);
+    a {
+        &.active {
+            background-color: $gray-lighter;
+        }
+    }
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: none !important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.sidebar .nav-third-level li a {
+    padding-left: 52px;
+}
+
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
+
+// Buttons
 
 .btn-outline {
+    color: inherit;
+    background-color: transparent;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: $brand-primary;
+}
+
+.btn-success.btn-outline {
+    color: $brand-success;
+}
+
+.btn-info.btn-outline {
+    color: $brand-info;
+}
+
+.btn-warning.btn-outline {
+    color: $brand-warning;
+}
+
+.btn-danger.btn-outline {
+    color: $brand-danger;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
     color: white;
-    border: 1px solid;
-    border-color: white;
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-        color: white;
-        border-color: $theme-primary;
-        background-color: $theme-primary;
-    }
 }
 
-.btn {
-    border-radius: 300px;
-    // @include alt-font;
+// Chat Widget
+
+.chat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.btn-xl {
-    font-size: 11px;
-    padding: 15px 45px;
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted $gray-light;
 }
-// Styling for the download section
-section.contact {
-    text-align: center;
-    h2 {
-        margin-top: 0;
-        margin-bottom: 25px;
-        i {
-            color: $brand-google-plus;
-        }
-    }
-    ul.list-social {
-        margin-bottom: 0;
-        li {
-            a {
-                font-size: 40px;
-                line-height: 80px;
-                display: block;
-                width: 80px;
-                height: 80px;
-                color: white;
-                border-radius: 100%;
-            }
-            &.social-twitter {
-                a {
-                    background-color: $brand-twitter;
-                    &:hover {
-                        background-color: darken($brand-twitter, 5%);
-                    }
-                }
-            }
-            &.social-facebook {
-                a {
-                    background-color: $brand-facebook;
-                    &:hover {
-                        background-color: darken($brand-facebook, 5%);
-                    }
-                }
-            }
-            &.social-google-plus {
-                a {
-                    background-color: $brand-google-plus;
-                    &:hover {
-                        background-color: darken($brand-google-plus, 5%);
-                    }
-                }
-            }
-        }
-    }
+
+.chat li.left .chat-body {
+    margin-left: 60px;
 }
-// Styling for the call to action section
-section.cta {
-    position: relative;
-    padding: 250px 0;
-    background-image: url('../img/bg-cta.jpg');
-    background-position: center;
-    // @include background-cover;
-    .cta-content {
-        position: relative;
-        z-index: 1;
-        h2 {
-            font-size: 50px;
-            max-width: 450px;
-            margin-top: 0;
-            margin-bottom: 25px;
-            color: white;
-        }
-        @media (min-width: 768px) {
-            h2 {
-                font-size: 80px;
-            }
-        }
-    }
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: fade-out(black, .5);
-    }
+
+.chat li.right .chat-body {
+    margin-right: 60px;
 }
-// Styling for the download section
-section.download {
-    position: relative;
-    padding: 150px 0;
-    h2 {
-        font-size: 50px;
-        margin-top: 0;
-    }
-    .badges {
-        .badge-link {
-            display: block;
-            margin-bottom: 25px;
-            &:last-child {
-                margin-bottom: 0;
-            }
-            img {
-                height: 60px;
-            }
-            @media(min-width: 768px) {
-                display: inline-block;
-                margin-bottom: 0;
-            }
-        }
-    }
-    @media(min-width: 768px) {
-        h2 {
-            font-size: 70px;
-        }
-    }
+
+.chat li .chat-body p {
+    margin: 0;
 }
-// Styling for the features section
-section.features {
-    .section-heading {
-        margin-bottom: 100px;
-        h2 {
-            margin-top: 0;
-        }
-        p {
-            margin-bottom: 0;
-        }
-    }
-    .device-container,
-    .feature-item {
-        max-width: 325px;
-        margin: 0 auto;
-    }
-    .device-container {
-        margin-bottom: 100px;
-        @media(min-width: 992px) {
-            margin-bottom: 0;
-        }
-    }
-    .feature-item {
-        padding-top: 50px;
-        padding-bottom: 50px;
-        text-align: center;
-        h3 {
-            font-size: 30px;
-        }
-        i {
-            font-size: 80px;
-            display: block;
-            margin-bottom: 15px;
-            background: -webkit-linear-gradient(to left, $theme-secondary, $theme-tertiary);
-            background: linear-gradient(to left, $theme-secondary, $theme-tertiary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    }
+
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+    margin-right: 5px;
 }
-// Styling for the footer
-footer {
-    padding: 25px 0;
-    text-align: center;
-    color: fade-out(white, .7);
-    background-color: $gray-darker;
-    p {
-        font-size: 12px;
-        margin: 0;
-    }
-    ul {
-        margin-bottom: 0;
-        li {
-            a {
-                font-size: 12px;
-                color: fade-out(white, .7);
-                &:hover,
-                &:focus,
-                &:active,
-                &.active {
-                    text-decoration: none;
-                }
-            }
-        }
-    }
+
+.chat-panel .panel-body {
+    height: 350px;
+    overflow-y: scroll;
 }
-// Global styling for this template
-html,
-body {
+
+// Login Page
+
+.login-panel {
+    margin-top: 25%;
+}
+
+// Flot Charts Containers
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
     width: 100%;
     height: 100%;
 }
 
-a {
-    color: $theme-primary;
-    &:hover,
-    &:focus {
-        color: darken($theme-primary, 10%);
+// DataTables Overrides
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+    background: transparent;
+}
+
+table.dataTable thead .sorting_asc:after {
+    content: "\f0de";
+    float: right;
+    font-family: fontawesome;
+}
+
+table.dataTable thead .sorting_desc:after {
+    content: "\f0dd";
+    float: right;
+    font-family: fontawesome;
+}
+
+table.dataTable thead .sorting:after {
+    content: "\f0dc";
+    float: right;
+    font-family: fontawesome;
+    color: rgba(50,50,50,.5);
+}
+
+// Circle Buttons 
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+// Grid Demo Elements
+
+.show-grid [class^="col-"] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #ddd;
+    background-color: #eee !important;
+}
+
+.show-grid {
+    margin: 15px 0;
+}
+
+// Custom Colored Panels
+
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: $brand-success;
+    > .panel-heading {
+        border-color: $brand-success;
+        color: white;
+        background-color: $brand-success;
+    }
+    > a {
+        color: $brand-success;
+        &:hover {
+            color: darken($brand-success, 15%);
+        }
     }
 }
 
-hr {
-    max-width: 100px;
-    margin: 25px auto 0;
-    border-width: 1px;
-    border-color: fade-out($gray-darker, .9);
+.panel-red {
+    border-color: $brand-danger;
+    > .panel-heading {
+        border-color: $brand-danger;
+        color: white;
+        background-color: $brand-danger;
+    }
+    > a {
+        color: $brand-danger;
+        &:hover {
+            color: darken($brand-danger, 15%);
+        }
+    }
 }
 
-hr.light {
-    border-color: white;
+.panel-yellow {
+    border-color: $brand-warning;
+    > .panel-heading {
+        border-color: $brand-warning;
+        color: white;
+        background-color: $brand-warning;
+    }
+    > a {
+        color: $brand-warning;
+        &:hover {
+            color: darken($brand-warning, 15%);
+        }
+    }
 }
 
-p {
-    font-size: 18px;
-    line-height: 1.5;
+// Timeline
+.timeline {
+    position: relative;
+    padding: 20px 0 20px;
+    list-style: none;
+}
+
+.timeline:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    margin-left: -1.5px;
+    background-color: #eeeeee;
+}
+
+.timeline > li {
+    position: relative;
     margin-bottom: 20px;
 }
 
-section {
-    padding: 100px 0;
-    h2 {
-        font-size: 50px;
-    }
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
 }
-// Styling for the masthead
-header.masthead {
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > li:after {
+    clear: both;
+}
+
+.timeline > li > .timeline-panel {
+    float: left;
     position: relative;
-
-    width: 100%;
-    padding-top: 150px;
-    padding-bottom: 100px;
-
-    color: white;
-    background: url('../img/bg-pattern.png'), $theme-secondary;
-    background: url('../img/bg-pattern.png'), -webkit-linear-gradient(to left, $theme-secondary, $theme-tertiary);
-    background: url('../img/bg-pattern.png'), linear-gradient(to left, $theme-secondary, $theme-tertiary);
-    .header-content {
-        max-width: 500px;
-        margin-bottom: 100px;
-
-        text-align: center;
-        h1 {
-            font-size: 30px;
-        }
-    }
-    .device-container {
-        max-width: 325px;
-        margin-right: auto;
-        margin-left: auto;
-        .screen img {
-            border-radius: 3px;
-        }
-    }
-    @media (min-width: 992px) {
-        height: 100vh;
-        min-height: 775px;
-        padding-top: 0;
-        padding-bottom: 0;
-        .header-content {
-            margin-bottom: 0;
-
-            text-align: left;
-            h1 {
-                font-size: 50px;
-            }
-        }
-        .device-container {
-            max-width: 325px;
-        }
-    }
+    width: 46%;
+    padding: 20px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.175);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.175);
 }
 
-// Styling for the navbar
-#mainNav {
-    border-color: fade-out($gray-darker, .95);
-    background-color: white;
-    // @include heading-font;
-    .navbar-brand {
-        color: $theme-primary;
-        // @include heading-font;
-        &:hover,
-        &:focus {
-            color: darken($theme-primary, 10%);
-        }
+.timeline > li > .timeline-panel:before {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 26px;
+    right: -15px;
+    border-top: 15px solid transparent;
+    border-right: 0 solid #ccc;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #ccc;
+}
+
+.timeline > li > .timeline-panel:after {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 27px;
+    right: -14px;
+    border-top: 14px solid transparent;
+    border-right: 0 solid #fff;
+    border-bottom: 14px solid transparent;
+    border-left: 14px solid #fff;
+}
+
+.timeline > li > .timeline-badge {
+    z-index: 100;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    border-radius: 50% 50% 50% 50%;
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 50px;
+    color: #fff;
+    background-color: #999999;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:before {
+    right: auto;
+    left: -15px;
+    border-right-width: 15px;
+    border-left-width: 0;
+}
+
+.timeline > li.timeline-inverted > .timeline-panel:after {
+    right: auto;
+    left: -14px;
+    border-right-width: 14px;
+    border-left-width: 0;
+}
+
+.timeline-badge.primary {
+    background-color: #2e6da4 !important;
+}
+
+.timeline-badge.success {
+    background-color: #3f903f !important;
+}
+
+.timeline-badge.warning {
+    background-color: #f0ad4e !important;
+}
+
+.timeline-badge.danger {
+    background-color: #d9534f !important;
+}
+
+.timeline-badge.info {
+    background-color: #5bc0de !important;
+}
+
+.timeline-title {
+    margin-top: 0;
+    color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+    margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+    margin-top: 5px;
+}
+
+@media(max-width:767px) {
+    ul.timeline:before {
+        left: 40px;
     }
-    .navbar-toggler {
-        font-size: 12px;
-        padding: 8px 10px;
-        color: $gray-darker;
+
+    ul.timeline > li > .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
     }
-    .navbar-nav {
-        > li {
-            > a {
-                font-size: 11px;
-                // @include alt-font;
-                &.active {
-                    color: $theme-primary !important;
-                    background-color: transparent;
-                    &:hover {
-                        background-color: transparent;
-                    }
-                }
-            }
-            > a,
-            > a:focus {
-                color: $gray-darker;
-                &:hover {
-                    color: $theme-primary;
-                }
-            }
-        }
+
+    ul.timeline > li > .timeline-badge {
+        top: 16px;
+        left: 15px;
+        margin-left: 0;
     }
-    @media (min-width: 992px) {
-        border-color: transparent;
-        background-color: transparent;
-        .navbar-brand {
-            color: fade(white, 70%);
-            &:hover,
-            &:focus {
-                color: white;
-            }
-        }
-        .navbar-nav > li > a,
-        .navbar-nav > li > a:focus {
-            color: fade-out(white, .3);
-            &:hover {
-                color: white;
-            }
-        }
-        &.navbar-shrink {
-            border-color: fade-out($gray-darker, .9);
-            background-color: white;
-            .navbar-brand {
-                color: $gray-darker;
-                &:hover,
-                &:focus {
-                    color: $theme-primary;
-                }
-            }
-            .navbar-nav > li > a,
-            .navbar-nav > li > a:focus {
-                color: $gray-darker;
-                &:hover {
-                    color: $theme-primary;
-                }
-            }
-        }
+
+    ul.timeline > li > .timeline-panel {
+        float: right;
+    }
+
+    ul.timeline > li > .timeline-panel:before {
+        right: auto;
+        left: -15px;
+        border-right-width: 15px;
+        border-left-width: 0;
+    }
+
+    ul.timeline > li > .timeline-panel:after {
+        right: auto;
+        left: -14px;
+        border-right-width: 14px;
+        border-left-width: 0;
     }
 }
-// Variables
-
-// Gray and Brand Colors for use across theme
-
-$theme-primary:    #fdcc52;
-$theme-secondary:  #7b4397;
-$theme-tertiary:   #dc2430;
-
-$gray-base:        #000;
-$gray-darker:      lighten($gray-base, 13.5%); // #222
-$gray-dark:        lighten($gray-base, 20%);   // #333
-$gray:             lighten($gray-base, 33.5%); // #555
-$gray-light:       lighten($gray-base, 46.7%); // #777
-$gray-lighter:     lighten($gray-base, 93.5%); // #eee
-
-$brand-twitter:		#1da1f2;
-$brand-facebook:	#3b5998;
-$brand-google-plus:	#dd4b39;

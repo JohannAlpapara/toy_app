@@ -21,7 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use devise
 gem 'devise', '~> 4.4.3'
 # Use bootstrap
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.2.0'
 # Use sprockets
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Use jquery
